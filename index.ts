@@ -23,10 +23,12 @@ async function createServer() {
 
   app.get("/", async (req, res) => {
     const url = req.originalUrl;
-    
+
     const { render } = await vite.ssrLoadModule(
       "/app/entry-server.tsx"
     );
+
+  
 
     const rootHtml = render();
 
@@ -41,6 +43,7 @@ async function createServer() {
     console.log(`istening on port http://localhost:${PORT}`);
   });
 }
+
 function createTemplate(rootHtml: string) {
   return `
   <!DOCTYPE html>
